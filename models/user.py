@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Module contains class 'User' that inherits
-from 'BaseModel'."""
-from models.base_model import BaseModel
+"""Module contains class 'User' to be added to the database."""
+from models.base_model import BaseModel, Base
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from models.place import Place
+from models.review import Review
 
 
-class User(BaseModel):
-    """User class that inherits from BaseModel."""
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
-
-    def __init__(self, *args, **kwargs):
-        """Initialization method."""
-        super().__init__(*args, **kwargs)
+class User(BaseModel, Base):
+    """User class."""
+    __tablename__ = "users"
+    email = Column(String(128), nullable=False)
+    password = Column(String(128), nullable=False)
+    first_name = Column(String(128))
+    last_name = Column(String(128))
+    places = relationship("Place", cascade='all, delete, delete-orphan',
+                          backref="user")
+    reviews = relationship("Review", cascade='all, delete, delete-orphan',
+                           backref="user")
