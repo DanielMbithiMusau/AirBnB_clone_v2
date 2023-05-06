@@ -10,9 +10,7 @@ env.user = "ubuntu"
 
 
 def do_pack():
-    '''Function that creates a compressed archive of
-    the web_static folder.
-    '''
+    """Creates a compressed archive"""
     if not os.path.exists("versions"):
         local('mkdir versions')
 
