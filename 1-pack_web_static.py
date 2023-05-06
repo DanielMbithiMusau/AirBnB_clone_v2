@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""Module contains fabric script that generates a .tgz
-archive from the contents of the web_static folder.
-"""
+"""Function that compresses the web_static folder. """
 from fabric.api import local
 from datetime import datetime
 import os
