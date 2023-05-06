@@ -65,7 +65,9 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """Creates a compressed archive of the web_static folder."""
+    """
+    Interface for set-up functions
+    """
     archive_path = do_pack()
 
     if archive_path is None:
