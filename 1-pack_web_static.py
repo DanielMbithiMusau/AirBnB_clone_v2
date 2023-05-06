@@ -8,10 +8,6 @@ import os
 
 
 def do_pack():
-    """
-    Function that creates a compressed archive
-    of the web_static folder.
-    """
     try:
         if not os.path.exists("versions"):
             os.makedirs("versions")
