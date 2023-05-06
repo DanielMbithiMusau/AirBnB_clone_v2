@@ -19,9 +19,11 @@ def do_deploy(archive_path):
 
         # Extract the archive to /data/web_static/releases/
         filename = archive_path.split("/")[-1]
-        directory = "/data/web_static/releases/{}".format(filename.split(".")[0])
+        directory = "/data/web_static/releases/{}".format(
+                filename.split(".")[0])
         run("sudo mkdir -p {}".format(directory))
-        run("sudo tar -xzf /tmp/{} -C {} --strip-components=1".format(filename, directory))
+        run("sudo tar -xzf /tmp/{} -C {} --strip-components=1".format(
+            filename, directory))
 
         # Delete the archive from the web server
         run("sudo rm /tmp/{}".format(filename))
