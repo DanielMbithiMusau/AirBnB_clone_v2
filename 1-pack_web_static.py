@@ -8,11 +8,11 @@ import os
 def do_pack():
     try:
         if not os.path.exists("versions"):
-            os.makedirs("versions")
+            local('mkdir versions')
 
         now = datetime.now()
-        archive_name = "web_static_{}{}{}{}{}{}.tgz".format(
-                now.year, now.month, now.day, now.hour, now.minute, now.second)
+        f = "%Y%m%d%H%M%S"
+        archive_name = "web_static_{}.tgz".format(now.strftime(f))
 
         command = f"tar -cvzf versions/{archive_name} web_static"
         local(command)
