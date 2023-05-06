@@ -1,13 +1,17 @@
 #!/usr/bin/python3
-"""Fabric script that generates a .tgz archive from
-the contents of the web_static folder."""
+"""Module contains fabric script that generates a .tgz
+archive from the contents of the web_static folder.
+"""
 from fabric.api import local
 from datetime import datetime
 import os
 
 
 def do_pack():
-    """Creates a compressed archive of the web_static folder."""
+    """
+    Function that creates a compressed archive
+    of the web_static folder.
+    """
     try:
         if not os.path.exists("versions"):
             os.makedirs("versions")
