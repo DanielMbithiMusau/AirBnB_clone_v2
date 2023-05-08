@@ -8,6 +8,7 @@ import os
 def do_pack():
     """Creates a compressed archive of the web_static folder.
 
+
     Returns:
         If the archive was created succesfully, returns the path to
         the archive. Otherwise, returns None.
