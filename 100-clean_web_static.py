@@ -19,14 +19,12 @@ def do_clean(number=0):
         including the most recent one.
     """
     number = int(number)
-    if number < 1:
-        number = 1
 
-    with lcd('./versions'):
-        local('ls -1t | tail -n +{} | xargs rm -f'.format(number + 1))
+    if number == 0:
+        number = 2
+    else:
+        number += 1
 
-    with cd('/data/web_static/releases'):
-        run('ls -1t | tail -n +{} | xargs rm -rf'.format(number + 1))
-
-        with cd('/data/web_static/releases'):
-            run('ls -1t | tail -n +{} | xargs rm -rf'.format(number + 1))
+    local('cd versions ; ls -t | tail -n +{} | xargs rm -rf'.format(number))
+    path = '/data/web_static/releases'
+    run('cd {} ; ls -t | tail -n +{} | xargs rm -rf'.format(path, number))
