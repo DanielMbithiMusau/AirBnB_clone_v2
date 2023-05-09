@@ -26,7 +26,8 @@ def do_pack():
     result = local(command)
 
     file_size = os.path.getsize("versions/{}".format(archive_name))
-    print("web_static packed: versions/{} -> {}Bytes".format(archive_name, file_size))
+    print("web_static packed: versions/{} -> {}Bytes".format(
+        archive_name, file_size))
 
     if result.succeeded:
         return "versions/{}".format(archive_name)
