@@ -19,15 +19,16 @@ def do_pack():
             now.year, now.month, now.day, now.hour,
             now.minute, now.second)
 
-    print(f"Packing web_static to versions/{archive_name}")
-    command = f"tar -cvzf versions/{archive_name} web_static"
+    print("Packing web_static to versions/{}".format(archive_name))
+    command = "tar -cvzf versions/{} web_static".format(archive_name)
     result = local(command)
 
-    file_size = os.path.getsize(f"versions/{archive_name}")
-    print(f"web_static packed: versions/{archive_name} -> {file_size}Bytes")
+    file_size = os.path.getsize("versions/{}".format(archive_name))
+    print("web_static packed: versions/{} -> {}Bytes".format(
+        archive_name, file_size))
 
     if result.succeeded:
-        return f"versions/{archive_name}"
+        return "versions/{}".format(archive_name)
     else:
         return None
 
