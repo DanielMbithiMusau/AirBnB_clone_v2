@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>States List</title>
+</head>
+<body>
+	<h1>{{Table}}</h1>
+    <ul>
+	    {% for id, name in items | dictsort(false, 'value') %}
+	    <li>{{ id }}: <b>{{ name }}</b></li>
+	    {% endfor %}
+    </ul>
+</body>
+</html>
