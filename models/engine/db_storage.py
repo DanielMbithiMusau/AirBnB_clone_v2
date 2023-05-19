@@ -76,4 +76,4 @@ class DBStorage:
 
     def close(self):
         """Close all open connections."""
-        self.__session.close()
+        self.__session.remove()
