@@ -42,14 +42,14 @@ class DBStorage:
                 cls = eval(cls)
             query = self.__session.query(cls)
             for obj in query:
-                key = f"{type(obj).__name__}.{obj.id}"
+                key = "{}.{}".format(type(obj).__name__, obj.id)
                 my_dict[key] = obj
         else:
             obj_list = [State, City, User, Place, Review, Amenity]
             for obj_cls in obj_list:
                 query = self.__session.query(obj_cls)
                 for obj in query:
-                    key = f"{type(obj).__name__}.{obj.id}"
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
                     my_dict[key] = obj
         return my_dict
 

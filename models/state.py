@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 import models
 from models.city import City
-
+import shlex
 
 
 class State(BaseModel, Base):
@@ -19,10 +19,9 @@ class State(BaseModel, Base):
     cities = relationship("City", cascade='all, delete, delete-orphan',
                           backref="state")
 
-    # if getenv("HBNB_TYPE_STORAGE") != "db":
     @property
     def cities(self):
-        var = model.storage.all()
+        var = models.storage.all()
         city_list = []
         city_result = []
         for key in var:
