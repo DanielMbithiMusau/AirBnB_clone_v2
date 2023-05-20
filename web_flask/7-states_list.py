@@ -16,15 +16,14 @@ def teardown_db(exception):
 
 
 @app.route('/states_list', strict_slashes=False)
-def display_html():
+def states_list():
     """
     Route to display a HTML page with the list of all State objects present in DBStorage.
     """
-    states = storage.all(State)
-    dict_to_html = {value.id: value.name for value in states.values()}
-    return render_template('7-states_list.html',
-            Table=states,
-            items=dict_to_html)
+    states = storage.all(State).values()
+    sorted_states = sorted(states, key=lambda state: state.name)
+
+    return render_template('7-states_list.html', states=sorted_states)
 
 
 if __name__ == '__main__':
