@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-"""Module contains class State that inherits from BaseModel."""
-from models.base_model import BaseModel, Base
+#!/usr/bin/python3
+"""This is the state class"""
 from sqlalchemy.ext.declarative import declarative_base
+from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 import models
@@ -10,7 +10,7 @@ import shlex
 
 
 class State(BaseModel, Base):
-    """State class
+    """This is the class for State
     Attributes:
         name: input name
     """
@@ -22,15 +22,14 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         var = models.storage.all()
-        city_list = []
-        city_result = []
+        lista = []
+        result = []
         for key in var:
             city = key.replace('.', ' ')
             city = shlex.split(city)
             if (city[0] == 'City'):
-                city_list.append(var[key])
-        for elem in city_list:
+                lista.append(var[key])
+        for elem in lista:
             if (elem.state_id == self.id):
-                city_result.append(elem)
-
-        return city_result
+                result.append(elem)
+        return (result)
